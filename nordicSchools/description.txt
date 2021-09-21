@@ -1,0 +1,1 @@
+We created a platform nordicschools.app that serves content to teachers based on a selfanalysis.
