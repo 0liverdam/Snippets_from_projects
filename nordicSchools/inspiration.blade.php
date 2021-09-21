@@ -118,22 +118,33 @@
             </div>
         @endauth
 
-        <div class="card page_card carousel">
-            <ul class="carousel_track">
-                @for ($i = 0; $i < 1; $i++)
-                    <li class="carousel_slide">
-                        <img class="carousel_image" src="{{asset('/storage/courses/BEDSTE_SKOLE_116.png')}}" alt="">
-                    </li>
-                @endfor
-            </ul>
-            <button class="carousel_prev"><img src="{{asset('storage/button-icons/carousel-prev.svg')}}" alt=""></button>
-            <button class="carousel_next"><img src="{{asset('storage/button-icons/carousel-next.svg')}}" alt=""></button>
-            <div class="carousel_dots">
-                @for ($i = 0; $i < 3; $i++)
-                    <button class="carousel_dot selected">
-                        <div class="carousel_dot_select"></div>
-                    </button>
-                @endfor
+        <div class="card page_card">
+            <div class="card-title page_card-title-holder">
+                <h4 class="page_card-title">
+                    {{ __('inspiration.ctg_title') }}
+                </h4>
+                <h5 class="page_card-title">
+                    {{ __('inspiration.ctg_body') }}
+                </h5>
+            </div>
+            <div class="ctg_card-body">
+                @foreach($categories as $key=>$ctg)
+                    <div class="ctg_col">
+                        <a href="category/{{$ctg->slug}}">
+                            <div class="ctg_img-holder ctg_{{$ctg->slug}}">
+                                <a href="category/{{$ctg->slug}}">
+                                    <img src="{{asset('/storage/categories/'.$ctg->slug.'-icon.svg')}}"
+                                            alt="{{$ctg->name}}" class="ctg_img"/>
+                                </a>
+                            </div>
+                        </a>
+                        <div class="ctg_name-holder">
+                            <a href="category/{{$ctg->slug}}" class="ctg_links">
+                                <p class="ctg_name mx-auto">{{ __('inspiration.' . $ctg->slug)}}</p>
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
 
